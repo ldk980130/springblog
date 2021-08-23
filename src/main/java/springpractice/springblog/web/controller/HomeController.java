@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import springpractice.springblog.domain.Member;
 import springpractice.springblog.domain.Post;
 import springpractice.springblog.service.PostService;
+import springpractice.springblog.web.SessionConst;
 
 @Slf4j
 @Controller

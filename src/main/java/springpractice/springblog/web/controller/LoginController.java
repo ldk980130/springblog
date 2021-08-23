@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import springpractice.springblog.domain.Member;
+import springpractice.springblog.web.SessionConst;
 import springpractice.springblog.web.form.LoginForm;
 import springpractice.springblog.service.LoginService;
 

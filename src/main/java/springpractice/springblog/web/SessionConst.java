@@ -1,4 +1,4 @@
-package springpractice.springblog.web.controller;
+package springpractice.springblog.web;
 
 public class SessionConst {
     public static final String LOGIN_MEMBER = "loginMember";
