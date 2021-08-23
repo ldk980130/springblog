@@ -1,4 +1,4 @@
-package springpractice.springblog.form;
+package springpractice.springblog.web.form;
 
 import lombok.Data;
 

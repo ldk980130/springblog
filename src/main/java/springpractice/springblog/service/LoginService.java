@@ -3,7 +3,7 @@ package springpractice.springblog.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import springpractice.springblog.domain.Member;
-import springpractice.springblog.form.LoginForm;
+import springpractice.springblog.web.form.LoginForm;
 
 @Service
 @RequiredArgsConstructor

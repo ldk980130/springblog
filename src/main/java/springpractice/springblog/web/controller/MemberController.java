@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import springpractice.springblog.domain.Member;
-import springpractice.springblog.form.MemberForm;
 import springpractice.springblog.service.MemberService;
+import springpractice.springblog.web.form.MemberForm;
 
 import javax.validation.Valid;
 
