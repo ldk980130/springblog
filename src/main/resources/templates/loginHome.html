@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>비회원 홈</title>
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>전체 게시글</h2>
+    </div>
+    <div class="row">
+        <div class="col">
+            <span class="ui-menu-icon" th:text="|${member.name}님|"></span>
+            <button class="btn btn-primary float-end"
+                    th:onclick="|location.href='@{/blog/{memberId}(memberId=${member.id})}'|"
+                    type="button">내블로그</button>
+            <button class="btn btn-primary float-end"
+                    th:onclick="|location.href='@{/logout}'|"
+                    type="button" style="margin-right: 10px">로그아웃</button>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>카테고리</th>
+            <th>작성시간</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="post : ${posts}"
+            th:onclick="|location.href='@{/posts/{postId}(postId=${post.id})}'|">
+            <td th:text="${post.title}"></td>
+            <td th:text="${post.category.blog.member.name}"></td>
+            <td th:text="${post.category.name}"></td>
+            <td th:text="${post.createTime}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <table class="table">
+
+        </table>
+    </div>
 
 </body>
 </html>
