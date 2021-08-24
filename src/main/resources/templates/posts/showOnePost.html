@@ -10,33 +10,20 @@
 
 <div class="container" style="max-width: 600px">
     <div class="row">
-        <div>
-            <h1>Spring Blogs</h1>
-            <h3 th:text="|${loginMember.name}님|"></h3>
-            <form th:action="@{/logout}" method="post">
-                <button class="btn btn-primary float-end"
-                        th:onclick="|location.href='@{/blog/{memberId}(memberId=${loginMember.id})}'|"
-                        type="button">내블로그</button>
-                <button class="btn btn-primary float-end"
-                        onclick="location.href='items.html'" type="submit"
-                        style="margin-right: 10px"> 로그아웃
-                </button>
-            </form>
+        <div th:replace="fragments/loginBodyHeader :: bodyHeader"/>
+    </div>
+    <div>
+        <div class="py-5 text-center">
+            <h1 th:text="${post.title}"></h1>
+            <h4 th:text="|카테고리 : ${post.getCategory().getName()}|"></h4>
+            <h4 th:text="|작성자 : ${writer}|"></h4>
         </div>
 
-        <div>
-            <div class="py-5 text-center">
-                <h1 th:text="${post.title}"></h1>
-                <h4 th:text="|카테고리 : ${post.getCategory().getName()}|"></h4>
-                <h4 th:text="|작성자 : ${writer}|"></h4>
-            </div>
+        <h3 th:text="${post.content}"></h3>
 
-            <h3 th:text="${post.content}"></h3>
+        <hr>
 
-            <hr>
-
-            <h5 style="float: right" th:text="${post.createTime}"></h5>
-        </div>
+        <h5 style="float: right" th:text="${post.createTime}"></h5>
     </div>
 </div>
 

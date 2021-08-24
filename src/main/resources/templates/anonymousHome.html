@@ -10,15 +10,7 @@
 
 <div class="container" style="max-width: 600px">
     <div class="row">
-        <div class="col">
-            <h1>Spring Blogs</h1>
-            <button class="btn btn-primary float-end"
-                    th:onclick="|location.href='@{/members/add}'|"
-                    type="button">회원가입</button>
-            <button class="btn btn-primary float-end"
-                    th:onclick="|location.href='@{/login}'|"
-                    type="button" style="margin-right: 10px">로그인</button>
-        </div>
+        <div th:replace="fragments/anonymousBodyHeader :: bodyHeader"/>
     </div>
     <div class="py-5 text-center">
         <h2>전체 게시글</h2>

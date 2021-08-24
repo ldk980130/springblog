@@ -9,23 +9,11 @@
 <body>
 <div class="container" style="max-width: 600px">
     <div class="row">
-        <div class="col">
-            <h1>Spring Blogs</h1>
-            <h3 th:text="|${loginMember.name}님|"></h3>
-            <form th:action="@{/logout}" method="post">
-                <button class="btn btn-primary float-end"
-                        th:onclick="|location.href='@{/blog/{memberId}(memberId=${loginMember.id})}'|"
-                        type="button">내블로그</button>
-                <button class="btn btn-primary float-end"
-                        onclick="location.href='items.html'" type="submit"
-                        style="margin-right: 10px">
-                        로그아웃
-                </button>
-            </form>
-        </div>
-        <div class="py-5 text-center">
-            <h2>전체 게시글</h2>
-        </div>
+        <div th:replace="fragments/loginBodyHeader :: bodyHeader"/>
+    </div>
+
+    <div class="py-5 text-center">
+        <h2>전체 게시글</h2>
     </div>
 
     <table class="table">
