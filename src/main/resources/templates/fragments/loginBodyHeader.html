@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="bodyHeader">
-    <h1>Spring Blogs</h1>
+    <a href="/" style="text-decoration: none"><h1>Spring Blogs</h1></a>
     <h3 th:text="|${loginMember.name}님|"></h3>
     <form th:action="@{/logout}" method="post">
         <button class="btn btn-primary float-end"
