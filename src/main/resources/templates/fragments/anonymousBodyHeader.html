@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="bodyHeader">
+    <h1>Spring Blogs</h1>
+    <button class="btn btn-primary float-end"
+            th:onclick="|location.href='@{/members/add}'|"
+            type="button">회원가입</button>
+    <button class="btn btn-primary float-end"
+            th:onclick="|location.href='@{/login}'|"
+            type="button" style="margin-right: 10px">로그인</button>
+</div>

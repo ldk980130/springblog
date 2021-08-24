@@ -30,17 +30,17 @@
         <div>
             이름 <input type="text" th:field="*{name}" class="form-control"
                       th:errorclass="field-error">
-            <div class="field-error" th:error="*{name}"/>
+            <div class="field-error" th:errors="*{name}"/>
         </div>
         <div>
             아이디 <input type="text" th:field="*{userId}" class="form-control"
                        th:errorclass="field-error">
-            <div class="field-error" th:error="*{userId}"/>
+            <div class="field-error" th:errors="*{userId}"/>
         </div>
         <div>
             비밀번호 <input type="password" th:field="*{password}" class="form-control"
                         th:errorclass="field-error">
-            <div class="field-error" th:error="*{password}"/>
+            <div class="field-error" th:errors="*{password}"/>
         </div>
 
         <hr class="my-4">

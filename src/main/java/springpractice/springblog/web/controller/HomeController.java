@@ -31,7 +31,7 @@ public class HomeController {
             return "anonymousHome";
         }
 
-        model.addAttribute("member", loginMember);
+        model.addAttribute("loginMember", loginMember);
         return "loginHome";
     }
 }

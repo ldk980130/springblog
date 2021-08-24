@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="bodyHeader">
+    <h1>Spring Blogs</h1>
+    <h3 th:text="|${loginMember.name}님|"></h3>
+    <form th:action="@{/logout}" method="post">
+        <button class="btn btn-primary float-end"
+                th:onclick="|location.href='@{/blog/{memberId}(memberId=${loginMember.id})}'|"
+                type="button">내블로그</button>
+        <button class="btn btn-primary float-end"
+                onclick="location.href='items.html'" type="submit"
+                style="margin-right: 10px"> 로그아웃
+        </button>
+    </form>
+</div>
