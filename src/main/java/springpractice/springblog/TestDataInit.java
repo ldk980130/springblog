@@ -25,7 +25,7 @@ public class TestDataInit {
     @PostConstruct
     public void init() {
         Member memberTester = memberService.join("test", "test!", "테스터");
-        Member memberLee = memberService.join("ldk", "0130", "lee");
+        Member memberLee = memberService.join("ldk3", "0130", "lee");
 
         Category testerBackCate = categoryService.resister(memberTester.getBlog(), "백엔드");
         Category testerFrontCate = categoryService.resister(memberTester.getBlog(), "프론트엔드");
