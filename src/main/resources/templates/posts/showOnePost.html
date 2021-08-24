@@ -24,6 +24,19 @@
         <hr>
 
         <h5 style="float: right" th:text="${post.createTime}"></h5>
+    </div><br><br>
+
+    <div>
+        <h5>댓글</h5>
+        <hr>
+        <div th:each="comment : ${comments}">
+            <p th:text="|${comment.member.name} : ${comment.content}|"></p>
+            <div th:each="subComment : ${comment.subComment}"
+                 style="margin-left: 30px">
+                <p th:text="|${subComment.member.name} : ${subComment.content}|"></p>
+            </div>
+            <hr>
+        </div>
     </div>
 </div>
 
