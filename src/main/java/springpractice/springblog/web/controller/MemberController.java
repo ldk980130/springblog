@@ -4,10 +4,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.*;
 import springpractice.springblog.domain.Member;
 import springpractice.springblog.service.MemberService;
 import springpractice.springblog.web.form.MemberForm;
@@ -33,8 +32,19 @@ public class MemberController {
             return "members/addMemberForm";
         }
 
-        Member addMember = memberService.join(memberForm.getUserId(), memberForm.getPassword(), memberForm.getName());
-        log.info("회원가입 성공 [{}]", addMember.getUserId());
+        Member addMember;
+        try {
+            addMember = memberService.join(memberForm.getUserId(), memberForm.getPassword(), memberForm.getName());
+            log.info("회원가입 성공 [{}]", addMember.getUserId());
+        } catch (IllegalStateException e) {
+            result.addError(
+                    new FieldError("MemberForm", "userId", memberForm.getUserId(), false,  null, null,
+                            "중복된 ID입니다.")
+            );
+            return "members/addMemberForm";
+        }
+
         return "redirect:/";
     }
+
 }
