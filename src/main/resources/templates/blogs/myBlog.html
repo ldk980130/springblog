@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>내블로그</title>
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .category-box{
+            width: 150px;
+            position: relative; right: 150px;
+        }
+    </style>
+</head>
+<body>
+<div class="container" style="max-width: 600px">
+    <div>
+        <div th:replace="fragments/loginBodyHeader :: bodyHeader"/>
+    </div>
+
+    <div class="py-5 text-center">
+        <h2 th:text="${blogTitle}">블로그 이름</h2>
+    </div>
+
+    <div class="category-box">
+        <h4 th:text="${categoryName}" onclick="showCategories()">카테고리</h4>
+        <div id="categories" onclick="showCategories()" style="visibility: hidden">
+            <ul th:each="category : ${categories}">
+                <li th:text="${category.name}"
+                    th:onclick="|location.href=
+                '@{/blogs/{memberId}/category/{categoryName}(memberId=${loginMember.userId},categoryName=${category.name})}'|"
+                    style="list-style: none;"></li>
+                <hr>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function showCategories() {
+            let categoryList = document.getElementById("categories");
+            if (categoryList.style.visibility == "hidden") {
+                categoryList.style.visibility = "visible";
+            }
+            else {
+                categoryList.style.visibility = "hidden";
+            }
+        }
+    </script>
+
+    <div><!--    내 전체 게시글-->
+        <table class="table">
+            <thead>
+            <tr>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>카테고리</th>
+                <th>작성시간</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post : ${posts}"
+                th:onclick="|location.href='@{/posts/{postId}(postId=${post.id})}'|">
+                <td th:text="${post.title}"></td>
+                <td th:text="${post.category.blog.member.name}"></td>
+                <td th:text="${post.category.name}"></td>
+                <td th:text="${post.createTime}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

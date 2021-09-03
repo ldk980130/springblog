@@ -33,6 +33,10 @@ public class CategoryService {
         }
     }
 
+    public Optional<Category> findByBlogAndName(Blog blog, String name) {
+        return categoryRepository.findByBlogAndName(blog, name);
+    }
+
     @Transactional
     public void editName(Long categoryId, String name) {
 
