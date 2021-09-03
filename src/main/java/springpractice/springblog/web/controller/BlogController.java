@@ -34,11 +34,8 @@ public class BlogController {
         List<Category> categories = blog.getCategories();
         List<Post> posts = postService.findPageByBlog(blog, 0, 5);
 
-        model.addAttribute("loginMember", member);
-        model.addAttribute("blogTitle", blog.getTitle());
         model.addAttribute("categories", categories);
-        model.addAttribute("posts", posts);
-        model.addAttribute("categoryName", "카테고리");
+        blogSetting(model, member, posts, "카테고리");
         return "blogs/myBlog";
     }
 
@@ -50,11 +47,14 @@ public class BlogController {
         Optional<Category> category = categoryService.findByBlogAndName(blog, categoryName);
         List<Post> posts = category.get().getPosts();
 
+        blogSetting(model, member, posts, categoryName);
+        return "blogs/myBlog";
+    }
+
+    private void blogSetting(Model model, Member member, List<Post> posts, String categoryName) {
         model.addAttribute("loginMember", member);
-        model.addAttribute("blogTitle", blog.getTitle());
+        model.addAttribute("blogTitle", member.getBlog().getTitle());
         model.addAttribute("posts", posts);
         model.addAttribute("categoryName", categoryName);
-
-        return "blogs/myBlog";
     }
 }
